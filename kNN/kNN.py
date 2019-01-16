@@ -38,6 +38,15 @@ class kNNClassifier():
         votes = Counter(topK_y)
 
         return votes.most_common(1)[0][0]
+
+    def _accuracy_score(self, y_true, y_predict):
+        assert y_true.shape == y_predict.shape,\
+            "the size of y_true must be equal to the size of y_predict"
+        return (sum(y_true == y_predict) / len(y_true))
+
+    def score(self, X_test, y_test):
+        y_predict = self.predict(X_test)
+        return self._accuracy_score(y_true=y_test,y_predict=y_predict)
         
     def __repr__(self):
         return "kNN(k=%d)" % self.k
