@@ -51,5 +51,10 @@ class SimpleLinearRegressionV2:
             "must be fit before oredict"
         return self.a_ * x_predict + self.b_
 
+    def score(self, x_test, y_test):
+        assert len(x_test) == len(y_test),\
+        "the size of y_true must be equal to the size of y_predict"
+        return 1 - np.sum((y_test - self.predict(x_test)) ** 2) / len(y_test) / np.var(y_test)
+
     def __repr__(self):
         return "SimpleLinearRegressionV2()"

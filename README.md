@@ -1,7 +1,9 @@
 # machine-learning-algorithm
 ## 内容
 主要是一些机器学习算法
+
 阅读顺序：
+
 1. kNN
 2. LinearRegression
 ## 代码组织
