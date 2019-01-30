@@ -16,7 +16,7 @@ class LinearRegression():
 
         return self
 
-    def fit_gd(self, X_train, y_train, eta=0.01):
+    def fit_gd(self, X_train, y_train, eta=0.01, n_iters=1e4):
         assert X_train.shape[0] == y_train.shape[0],\
             "the size of X_train must be equal to y_train"
 
@@ -27,11 +27,12 @@ class LinearRegression():
                 return float('inf')
 
         def dJ(theta, x_b, y):
-            res = np.empty(len(theta))
-            res[0] = np.sum(x_b.dot(theta) - y)
-            for i in range(1, len(theta)):
-                res[i] = np.sum((x_b.dot(theta) - y).dot(x_b[:,i]))
-            return res * 2 / len(x_b)
+            # res = np.empty(len(theta))
+            # res[0] = np.sum(x_b.dot(theta) - y)
+            # for i in range(1, len(theta)):
+            #     res[i] = np.sum((x_b.dot(theta) - y).dot(x_b[:,i]))
+            # return res * 2 / len(x_b)
+            return x_b.T.dot(x_b.dot(theta) - y) * 2. / len(y)
 
         def gradient_descent(x_b, y, initial_theta, eta, n_iters=10000, epsilon=1e-8):
             theta = initial_theta
@@ -46,7 +47,7 @@ class LinearRegression():
             return theta
         X_b = np.hstack([np.ones((len(X_train), 1)), X_train])
         initial_theta = np.zeros(X_b.shape[1])
-        self._theta = gradient_descent(X_b, y_train, initial_theta, eta)
+        self._theta = gradient_descent(X_b, y_train, initial_theta, eta, n_iters)
         self.coef_ = self._theta[1:]
         self.interception_ = self._theta[0]
 
