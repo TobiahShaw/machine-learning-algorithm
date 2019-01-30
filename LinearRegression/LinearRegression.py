@@ -16,6 +16,42 @@ class LinearRegression():
 
         return self
 
+    def fit_gd(self, X_train, y_train, eta=0.01):
+        assert X_train.shape[0] == y_train.shape[0],\
+            "the size of X_train must be equal to y_train"
+
+        def J(theta, x_b, y):
+            try:
+                return np.sum((y - x_b.dot(theta)) ** 2) / len(x_b)
+            except:
+                return float('inf')
+
+        def dJ(theta, x_b, y):
+            res = np.empty(len(theta))
+            res[0] = np.sum(x_b.dot(theta) - y)
+            for i in range(1, len(theta)):
+                res[i] = np.sum((x_b.dot(theta) - y).dot(x_b[:,i]))
+            return res * 2 / len(x_b)
+
+        def gradient_descent(x_b, y, initial_theta, eta, n_iters=10000, epsilon=1e-8):
+            theta = initial_theta
+            i_iter = 0
+            while i_iter < n_iters:
+                gradient = dJ(theta, x_b, y)
+                last_theta = theta
+                theta = theta - eta * gradient
+                i_iter = i_iter + 1
+                if(abs(J(theta, x_b, y) - J(last_theta, x_b, y)) < epsilon):
+                    break
+            return theta
+        X_b = np.hstack([np.ones((len(X_train), 1)), X_train])
+        initial_theta = np.zeros(X_b.shape[1])
+        self._theta = gradient_descent(X_b, y_train, initial_theta, eta)
+        self.coef_ = self._theta[1:]
+        self.interception_ = self._theta[0]
+
+        return self
+
     def predict(self, X_predict):
         assert self.coef_ is not None and self.interception_ is not None,\
             "must fit before predict"
