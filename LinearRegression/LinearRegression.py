@@ -53,6 +53,35 @@ class LinearRegression():
 
         return self
 
+    def fit_sgd(self, X_train, y_train, n_iters=5, t0=5, t1=50):
+        assert X_train.shape[0] == y_train.shape[0],\
+            "the size of X_train must be equal to y_train"
+        assert n_iters >= 1,\
+            "n_iters must >= 1"
+        def dJ_sgd(theta, x_b_i, y_i):
+            return x_b_i.T.dot(x_b_i.dot(theta) - y_i) * 2.
+        def sgd(X_b, y, initial_theta, n_iters, t0=5, t1=50):
+            def learn_rate(t):
+                return t0 / (t + t1)
+            theta = initial_theta
+            m = len(X_b)
+            for cur_iters in range(n_iters):
+                indexs = np.random.permutation(m)
+                X_b_new = X_b[indexs]
+                y_new = y[indexs]
+                for i in range(m):
+                    gradient = dJ_sgd(theta, X_b_new[i], y_new[i])
+                    theta = theta - learn_rate(cur_iters * m + i) * gradient
+            return theta
+
+        X_b = np.hstack([np.ones((len(X_train),1)), X_train])
+        initial_theta = np.zeros(X_b.shape[1])
+        self._theta = sgd(X_b, y_train, initial_theta, n_iters, t0, t1)
+        self.coef_ = self._theta[1:]
+        self.interception_ = self._theta[0]
+
+        return self
+
     def predict(self, X_predict):
         assert self.coef_ is not None and self.interception_ is not None,\
             "must fit before predict"
