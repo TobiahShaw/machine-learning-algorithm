@@ -105,3 +105,6 @@ venv.bak/
 
 # vscode
 .vscode
+
+# lfw data too big and not important
+PCAandGradientAscent/datasets/lfw_home
