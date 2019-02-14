@@ -8,7 +8,7 @@
 2. LinearRegression （包含线性回归算法以及验算，主要介绍正规方程解、向量化运算、线性回归算法性能评估）
 3. GradientDescent （包含梯度下降法、线性回归的梯度下降法求解、梯度下降法调试）
 4. PCAandGradientAscent （包含 PCA 算法以及验算、降维、降噪、特征提取）
-5. PolynomialRegression （包含多项式回归算法、PipeLine、拟合过拟合）
+5. PolynomialRegression （包含多项式回归算法、PipeLine、过拟合和欠拟合）
 
 ## 代码组织
 python 代码和 jupyter note 文件，其中会在 jupyter note 内引用 python 代码
