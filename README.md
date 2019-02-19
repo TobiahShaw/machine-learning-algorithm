@@ -10,6 +10,7 @@
 4. PCAandGradientAscent （包含 PCA 算法以及验算、降维、降噪、特征提取）
 5. PolynomialRegression （包含多项式回归算法、PipeLine、过拟合和欠拟合、泛化、学习曲线、交叉验证、正则化、岭回归、LASSO、L1，L2和弹性网络）
 6. LogisticRegression （包含逻辑回归算法）
+7. ClassificationPerformanceMeasures（评估分类算法优劣、混淆矩阵）
 
 ## 代码组织
 python 代码和 jupyter note 文件，其中会在 jupyter note 内引用 python 代码
