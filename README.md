@@ -11,7 +11,7 @@
 5. PolynomialRegression （包含多项式回归算法、PipeLine、过拟合和欠拟合、泛化、学习曲线、交叉验证、正则化、岭回归、LASSO、L1，L2和弹性网络）
 6. LogisticRegression （包含逻辑回归算法）
 7. ClassificationPerformanceMeasures（评估分类算法优劣、混淆矩阵、精准率、召回率、ROC曲线、多分类评估）
-8. SupportVectorMachine （包含支撑向量机SVM）
+8. SupportVectorMachine （包含Hard Margin SVM、Soft Margin SVM）
 
 ## 代码组织
 python 代码和 jupyter note 文件，其中会在 jupyter note 内引用 python 代码
