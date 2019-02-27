@@ -12,7 +12,7 @@
 6. LogisticRegression （包含逻辑回归算法、正则化、多分类）
 7. ClassificationPerformanceMeasures（评估分类算法优劣、混淆矩阵、精准率、召回率、ROC曲线、多分类评估）
 8. SupportVectorMachine （包含Hard Margin SVM、Soft Margin SVM、多项式、核函数）
-9. DecisionTree（决策树、信息熵）
+9. DecisionTree（决策树、信息熵、基尼系数）
 
 ## 代码组织
 python 代码和 jupyter note 文件，其中会在 jupyter note 内引用 python 代码
