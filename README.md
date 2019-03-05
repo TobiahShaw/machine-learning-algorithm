@@ -1,5 +1,7 @@
 # machine-learning-algorithm
+
 ## 内容
+
 主要是一些机器学习算法
 
 推荐阅读顺序：
@@ -15,7 +17,12 @@
 9. DecisionTree（决策树、信息熵、基尼系数、局限性）
 10. EnsembleLearningAndRandomForest（集成学习、hard/soft voting classifier、Bagging and Pasting、随机森林、Extra Trees、Boosting、Stacking）
 
+更新已初步完成
+
 ## 代码组织
+
 python 代码和 jupyter note 文件，其中会在 jupyter note 内引用 python 代码
+
 ## 环境
+
 Python3.6
